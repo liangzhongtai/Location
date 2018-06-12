@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.chinamobile.loc.location" version="1.2.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>location</name>
+    <js-module name="location" src="www/location.js">
+        <clobbers target="cordova.plugins.location" />
+    </js-module>
+
+	<platform name="android">
+        <!-- 定位插件 -->
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Location">
+                <param name="android-package" value="com.chinamobile.loc.Location"/>
+            </feature>
+        </config-file>
+        <!-- 权限 -->
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+        </config-file>
+     
+        <!-- 项目文件 -->
+         <source-file src="src/android/Location.java"  target-dir="src/com/chinamobile/loc" />
+         <source-file src="src/android/LocationUtils.java" target-dir="src/com/chinamobile/loc" />
+    </platform>
+    
+    <platform name="ios">
+        <!-- 定位插件 -->
+        <config-file target="config.xml" parent="/*">
+            <feature name="Location">
+                <param name="ios-package" value="Location" />
+            </feature>
+        </config-file>
+        <!--  项目文件 -->
+
+    </platform>
+
+</plugin>
